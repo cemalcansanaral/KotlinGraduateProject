@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    
+    <data>
+        <variable name="yemekDetayFragment" type="com.cemalcansanaral.bitirmetezi.fragment.YemekDetayFragment" />
+        <variable name="yemekNesnesi" type="com.cemalcansanaral.bitirmetezi.entity.Yemekler" />
+        <variable name="yemeklerAdapter" type="com.cemalcansanaral.bitirmetezi.adapter.YemeklerAdapter" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayoutYemekDetay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".fragment.YemekDetayFragment"
+        android:clickable="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <ImageView
+            android:id="@+id/imageViewBackground"
+            android:layout_width="0dp"
+            android:layout_height="350dp"
+            android:background="@drawable/yemek_detay_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="50dp"
+            android:fontFamily="@font/pacifico"
+            android:text="MyDesire"
+            android:textColor="@color/white"
+            android:textSize="34sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:src="@drawable/mdlogo32x32"
+            app:layout_constraintBottom_toBottomOf="@+id/textView3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textView3" />
+
+        <ImageView
+            android:id="@+id/imageViewDetayResim"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="32dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/textViewDetayYemekAd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/comfortaa_bold"
+            android:text="@{yemekNesnesi.yemek_adi}"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@+id/imageViewDetayResim"
+            app:layout_constraintTop_toTopOf="@+id/imageViewDetayResim" />
+
+        <TextView
+            android:id="@+id/textViewDetayYemekFiyat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:background="@drawable/yemek_detay_fiyat_background"
+            android:fontFamily="@font/comfortaa_bold"
+            android:gravity="center"
+            android:text='@{yemekNesnesi.yemek_fiyat + "₺"}'
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageViewDetayResim"
+            app:layout_constraintStart_toEndOf="@+id/imageViewDetayResim" />
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="-22dp"
+            android:isIndicator="true"
+            android:max="5"
+            android:numStars="5"
+            android:progressTint="@color/white"
+            android:rating="4.5"
+            android:scaleX=".7"
+            android:scaleY=".7"
+            android:stepSize=".5"
+            app:layout_constraintBottom_toTopOf="@+id/textViewDetayYemekFiyat"
+            app:layout_constraintStart_toEndOf="@+id/imageViewDetayResim"
+            app:layout_constraintTop_toBottomOf="@+id/textViewDetayYemekAd" />
+
+
+        <TextView
+            android:id="@+id/textViewYemekAciklama"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/comfortaa_bold"
+            android:padding="20dp"
+            android:text="TextView"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewBackground" />
+
+        <ImageButton
+            android:id="@+id/imageButtonRemove"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/yemekdetay_remove_button_background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/remove_icon" />
+
+        <ImageButton
+            android:id="@+id/imageButtonAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/yemekdetay_add_button_background"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewNumber"
+            app:layout_constraintStart_toEndOf="@+id/textViewNumber"
+            app:layout_constraintTop_toTopOf="@+id/textViewNumber"
+            app:srcCompat="@drawable/add_icon" />
+
+        <TextView
+            android:id="@+id/textViewNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/yemekdetay_number_background"
+            android:gravity="center"
+            android:text="1"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/imageButtonRemove"
+            app:layout_constraintStart_toEndOf="@+id/imageButtonRemove"
+            app:layout_constraintTop_toTopOf="@+id/imageButtonRemove" />
+
+        <Button
+            android:id="@+id/buttonSepeteEkle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/yemekdetay_button_background"
+            android:drawableLeft="@drawable/shopping_card_icon"
+            android:onClick="@{() -> yemekDetayFragment.buttonSepeteEkle(yemekNesnesi,textViewNumber.getText().toString(),textViewNumber)}"
+            android:text="Sepete Ekle"
+            android:textAllCaps="false"
+            app:cornerRadius="20dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewNumber"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textViewNumber" />
+
+        <ImageView
+            android:id="@+id/imageViewBosluk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="parent"
+            app:srcCompat="@android:drawable/button_onoff_indicator_off" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
